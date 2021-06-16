@@ -1,0 +1,28 @@
+{
+    "name": "nicollassilva/habbo-home-system",
+    "description": "A famous profile management system that surrounded habbo a decade ago.",
+    "type": "project",
+    "require": {
+        "nicollassilva/minasrouter": "^1.0",
+        "nicollassilva/minasorm": "^0.17.0",
+        "wixel/gump": "1.11"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicollas Silva",
+            "email": "inicollashps@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Utils/helpers.php"
+        ]
+    }
+}
