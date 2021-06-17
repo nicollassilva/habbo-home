@@ -1,5 +1,3 @@
-@extends('includes.app')
-
 @section('title', 'Página inicial')
 
 @section('content')

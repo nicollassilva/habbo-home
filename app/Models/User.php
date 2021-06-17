@@ -2,25 +2,43 @@
 
 namespace App\Models;
 
-use App\Utils\Carbon;
-use MinasORM\Database;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Database {
-    protected $fillables = [
-        'username', 'password', 'created_at', 'updated_at'
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'username'
     ];
 
     /**
-     * Register a user
-     * 
-     * @return \App\Models\User|null|bool
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
      */
-    public static function store(Array $data)
-    {
-        $data["created_at"] = Carbon::now();
-        $data["updated_at"] = Carbon::now();
-        $data["password"] = password_hash($data["password"], PASSWORD_BCRYPT);
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-        return User::create($data);
-    }
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
