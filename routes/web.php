@@ -17,6 +17,7 @@ Route::redirect("/", "/login");
 
 Route::prefix("home/")
     ->name("home.")
+    ->middleware("auth")
     ->group(function() {
         Route::get("/index", [App\Http\Controllers\Home\HomeController::class, "index"])->name("index");
     });

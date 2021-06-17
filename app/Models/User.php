@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Home\Item;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -41,4 +41,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getItems()
+    {
+        return $this->items()->with('product');
+    }
+
+    public function activeBackground()
+    {
+        return $this->getItems()
+            ->whereBackground(true)
+            ->wherePlaced(true)
+            ->whereEditing(true)
+            ->limit(1)
+            ->first();
+    }
+
+    public function placedItems()
+    {
+        return $this->getItems()
+            ->whereIn('placed', [true, false])
+            ->whereEditing(true)
+            ->whereBackground(false)
+            ->whereWidget(false)
+            ->where("widget_id", "<>", null)
+            ->get();
+    }
 }

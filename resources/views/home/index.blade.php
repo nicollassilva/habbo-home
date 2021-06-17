@@ -6,7 +6,7 @@
     $playgroundBackground = '';
 
     if($background) {
-        $playgroundBackground = "style=\"background-image: url('/homepage/backgrounds/{$background->image}');\"";
+        $playgroundBackground = "style=\"background-image: url('/storage/homepage/backgrounds/{$background->product->image}');\"";
     }
 @endphp
 
@@ -22,7 +22,24 @@
             <button class="btn btn-sm btn-success" dataSave><i class="fas fa-save mr-1"></i>Salvar home</button>
         </div>
         <div class="playground" {!! $playgroundBackground !!}>
-
+            @foreach ($items as $userItem)
+            <div 
+                class="sticker in-draggable itemid{{ $userItem->product->id }} widget-{{ $userItem->widget_id }}"
+                reverse="{{ $userItem->reverse }}"
+                style="
+                    width: {{ $userItem->width }}px;
+                    height: {{ $userItem->height }}px;
+                    left: {{ $userItem->x }}px;
+                    top: {{ $userItem->y }}px;
+                    z-index: {{ $userItem->z }}px;
+                    background-image: url('/storage/homepage/{{ $userItem->product->category->name }}/{{ $userItem->product->image }}')
+                    ">
+                <div class="btns-actions">
+                    <button><i class="stickers"></i></button>
+                    <button><i class="delete"></i></button>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>

@@ -2,8 +2,8 @@
 
 namespace App\Models\Home;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Widget extends Model
 {
@@ -19,8 +19,6 @@ class Widget extends Model
         "hcm_skin",
         "hcgirl_skin"
     ];
-
-    protected $table = "users_home_widgets";
 
     public function themes()
     {

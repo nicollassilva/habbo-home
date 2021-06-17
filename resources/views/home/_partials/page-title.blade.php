@@ -1,9 +1,9 @@
 <div class="jumbotron w-100 text-secondary">
-    @if (router()->current()->getName() === "home.index")
+    @if (Route::current()->getName() === 'home.index')
     <h1 class="display-5"><i class="fas fa-file-alt mr-2"></i>Minha Habbo Home</h1>
     @else
     <h1 class="display-5"><i class="fas fa-file-alt mr-2"></i>Habbo Home</h1>
-    <p class="lead">Exibindo a página de <b>{{ user()->username }}</b></p>
+    <p class="lead">Exibindo a página de <b>{{ $user->username ?? 'Anônimo' }}</b></p>
     @endif
     <hr class="my-4">
     <form action="" autocomplete="off" method="POST">

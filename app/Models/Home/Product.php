@@ -2,18 +2,17 @@
 
 namespace App\Models\Home;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Messages extends Model
+class Product extends Model
 {
     use HasFactory;
     
-    protected $table = "users_home_messages";
+    protected $table = "home_items";
 
-    public function user()
+    public function category()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Category::class);
     }
 }
