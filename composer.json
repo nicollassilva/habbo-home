@@ -5,7 +5,9 @@
     "require": {
         "nicollassilva/minasrouter": "^1.0",
         "nicollassilva/minasorm": "^0.17.0",
-        "wixel/gump": "1.11"
+        "wixel/gump": "1.11",
+        "jenssegers/blade": "^1.4",
+        "nesbot/carbon": "^2.49"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.2"

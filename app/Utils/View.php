@@ -2,46 +2,35 @@
 
 namespace App\Utils;
 
-use Exception;
+use Jenssegers\Blade\Blade;
 
-class View {
+abstract class View {
+    /** @var object */
+    protected static $bladeInstance;
     
     /**
-     * @param string $view
-     * @param array $resources
+     * Method responsible to instance
+     * a Blade template engine.
+     * 
+     * @return void
      */
-    public function view(String $view, Array $resources = [])
+    public static function initBlade()
     {
-        $filePath = $this->getDirectory($view);
-        
-        if(!file_exists($filePath)) {
-            throw new Exception("View [{$view}] doesn't exists.", 500);
-        }
-        
-        if($resources != null) {
-            extract($resources, EXTR_PREFIX_SAME, "wddx");
-        }
+        if(self::$bladeInstance instanceof Blade) return;
 
-        require_once $filePath;
-    }
+        $rootPath = dirname(__DIR__, 2);
 
-    /**
-     * @param string $file
-     * @return string
-     */
-    public function getDirectory(String $file): String
-    {
         $ds = DIRECTORY_SEPARATOR;
 
-        $fileDirectory = str_replace('.', $ds, $file);
+        $completePath = "{$rootPath}{$ds}resources{$ds}";
 
-        return dirname(__DIR__, 2) . "{$ds}resources{$ds}views{$ds}{$fileDirectory}.php";
+        self::$bladeInstance = new Blade("{$completePath}views", "{$completePath}cache");
     }
 
-    public static function __callStatic($name, $arguments)
+    public static function render(String $view, Array $data = [], Array $mergedData = [])
     {
-        if($name === 'render') {
-            return (new static)->view($arguments[0], $arguments[1]);
-        }
+        self::initBlade();
+
+        echo self::$bladeInstance->render($view, $data, $mergedData);
     }
 }

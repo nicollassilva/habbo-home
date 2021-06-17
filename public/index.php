@@ -7,9 +7,11 @@ use MinasRouter\Router\Route;
 Route::start(getenv("SITE_URL") ?? "https://localhost");
 
 Route::namespace("App\Controllers")
-    ->name("site.")
+    ->name("users.")
     ->group(function() {
-        Route::get("/", "SiteController@index")->name("index");
+        Route::get("/", "UserController@index")->name("index");
+        Route::get("/users/create", "UserController@create")->name("create");
+        Route::post("/users/store", "UserController@store")->name("store");
     });
 
 Route::execute();
