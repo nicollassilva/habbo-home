@@ -1,7 +1,9 @@
 Homepage = {
+    playground: $('.box-home .playground'),
+
     initialize() {
         this.initDraggable();
-        this.reload();
+        //this.reload();
     },
 
     initDraggable() {

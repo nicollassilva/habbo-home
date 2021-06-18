@@ -48,8 +48,10 @@ class WidgetServices
         //     $this->user()
         // )->badges();
 
+        $badges = [];
+
         return view("home.widgets.widget-{$this->id()}", [
-            "badges" => [],
+            "badges" => $badges,
             "item" => $this->item
         ]);
     }

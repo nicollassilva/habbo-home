@@ -2,10 +2,13 @@
     position: absolute;
     background-repeat: no-repeat;
     background-position: center;
-    transition: transform .4s cubic-bezier(0.23, 1, 0.320, 1);
+
+    img {
+        transition: transform .4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
 }
 
-.box-home .playground .sticker[reverse="1"] {
+.box-home .playground .sticker[reverse="1"] img {
     transform: rotateY(180deg);
 }
 

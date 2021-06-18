@@ -20,6 +20,14 @@ Route::prefix("home/")
     ->middleware("auth")
     ->group(function() {
         Route::get("/index", [App\Http\Controllers\Home\HomeController::class, "index"])->name("index");
+
+        Route::get("/category/{id}/subcategories", [App\Http\Controllers\Home\HomeController::class, "subcategories"])
+            ->name("category.subcategories")
+            ->whereNumber('id');
+
+        Route::get("/subcategory/{id}/products", [App\Http\Controllers\Home\HomeController::class, "subcategoryProducts"])
+            ->name("subcategory.products")
+            ->whereNumber('id');
     });
 
 Auth::routes();

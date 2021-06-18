@@ -110,3 +110,137 @@
         margin-top: 10px;
     }
 }
+
+.modal {
+    padding: 0 !important; // override inline padding-right added from js
+}
+
+.modal .modal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+}
+
+.modal .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+}
+
+.modal .modal-body {
+    overflow-y: auto;
+}
+
+.modal.home-shop {
+    .modal-content {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #f1f1f1;
+
+        .modal-body {
+            .subcategories {
+                max-height: calc(100vh - 100px);
+                overflow: hidden auto;
+
+                li > a {
+                    background-color: var(--secondary);
+                    border-radius: 3px;
+                    color: #f1f1f1;
+                    font-size: 14px;
+                    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+                    margin-top: 4px;
+                    transition: all .3s;
+
+                    .icon {
+                        width: 25px;
+                        height: 25px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        margin-right: 5px;
+                        float: left;
+                        image-rendering: pixelated;
+                        margin-top: -3px;
+                    }
+
+                    &:hover,
+                    &.active {
+                        padding-left: 20px;
+                        font-weight: 600;
+                        background-color: var(--primary);
+                    }
+                }
+            }
+
+            .items {
+                .box-item-actions {
+                    height: 250px;
+                    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+                    border: 1px solid rgba(0, 0, 0, 0.6);
+                    border-radius: 5px;
+                    position: relative;
+                    padding: 8px 10px;
+                }
+
+                .box-items {
+                    max-height: calc(100vh - 375px);
+                    overflow: hidden auto;
+                    position: relative;
+                    margin-top: 20px;
+                    display: flex;
+                    padding: 5px;
+                    flex-wrap: wrap;
+
+                    .item {
+                        width: 100px;
+                        height: 100px;
+                        margin: 5px;
+                        border: 1px solid black;
+                        background-color: var(--secondary);
+                        box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(0, 0, 0, 0.6);
+                        padding: 2.5px;
+                        position: relative;
+                        transition: all .3s;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        border: 4px solid var(--secondary);
+                        image-rendering: pixelated;
+                        border-radius: 5px;
+
+                        &:hover {
+                            background-color: #74b9ff;
+                            cursor: pointer;
+                            border-color: #74b9ff;
+                            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 1);
+                        }
+
+                        &.active {
+                            background-color: var(--primary);
+                            border-color: var(--primary);
+                            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav .nav-item .nav-link:not(.disabled) {
+    width: auto;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    color: white;
+    font-weight: 400;
+    text-shadow: 0 1px 0 black;
+    position: relative;
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #74b9ff;
+    }
+}
