@@ -23,22 +23,25 @@
         </div>
         <div class="playground" {!! $playgroundBackground !!}>
             @foreach ($items as $userItem)
-            <div 
-                class="sticker in-draggable itemid{{ $userItem->product->id }} widget-{{ $userItem->widget_id }}"
-                reverse="{{ $userItem->reverse }}"
-                style="
-                    width: {{ $userItem->width }}px;
-                    height: {{ $userItem->height }}px;
-                    left: {{ $userItem->x }}px;
-                    top: {{ $userItem->y }}px;
-                    z-index: {{ $userItem->z }}px;
-                    background-image: url('/storage/homepage/{{ $userItem->product->category->name }}/{{ $userItem->product->image }}')
-                    ">
-                <div class="btns-actions">
-                    <button><i class="stickers"></i></button>
-                    <button><i class="delete"></i></button>
-                </div>
-            </div>
+                @if (!$userItem->widget)
+                    <div class="sticker in-draggable itemid{{ $userItem->product->id }} widget-{{ $userItem->widget_id }}"
+                        reverse="{{ $userItem->reverse }}"
+                        style="
+                            width: {{ $userItem->product->width }}px;
+                            height: {{ $userItem->product->height }}px;
+                            left: {{ $userItem->x }}px;
+                            top: {{ $userItem->y }}px;
+                            z-index: {{ $userItem->z }}px;
+                            background-image: url('/storage/homepage/{{ $userItem->product->category->name }}/{{ $userItem->product->image }}')
+                            ">
+                        <div class="btns-actions">
+                            <button><i class="stickers"></i></button>
+                            <button><i class="delete"></i></button>
+                        </div>
+                    </div>
+                @else
+                    {!! widget($userItem) !!}
+                @endif
             @endforeach
         </div>
     </div>

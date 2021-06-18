@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Home\Item;
+use App\Models\Home\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(Item::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function getItems()
     {
         return $this->items()->with('product');
@@ -68,7 +74,6 @@ class User extends Authenticatable
             ->whereIn('placed', [true, false])
             ->whereEditing(true)
             ->whereBackground(false)
-            ->whereWidget(false)
             ->where("widget_id", "<>", null)
             ->get();
     }
