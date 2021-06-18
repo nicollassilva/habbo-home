@@ -31,11 +31,11 @@
                             height: {{ $userItem->product->height }}px;
                             left: {{ $userItem->x }}px;
                             top: {{ $userItem->y }}px;
-                            z-index: {{ $userItem->z }}px;
+                            z-index: {{ $userItem->z }};
                             background-image: url('/storage/homepage/{{ $userItem->product->category->name }}/{{ $userItem->product->image }}')
                             ">
                         <div class="btns-actions">
-                            <button><i class="stickers"></i></button>
+                            <button><i class="rotate"></i></button>
                             <button><i class="delete"></i></button>
                         </div>
                     </div>

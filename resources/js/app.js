@@ -1,3 +1,9 @@
+require('jquery-ui-dist/jquery-ui');
 require('./bootstrap');
-require('./vendor/fontawesome.min');
-require('./vendor/iziToast.min');
+require('./home/Homepage');
+
+$("body").tooltip({
+    selector: '[data-toggle="tooltip"]',
+    html: true,
+    boundary: 'window'
+});

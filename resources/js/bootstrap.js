@@ -9,8 +9,20 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+    window.iziToast = window.toast = require('./vendor/iziToast.min');
+
+    iziToast.settings({
+        transitionIn: "flipInX",
+        icon: "FontAwesome",
+        transitionOut: "flipOutX",
+        theme: 'dark',
+        displayMode: 'replace',
+        position: "center",
+        timeout: 3e3
+    });
 
     require('bootstrap');
+    require('./vendor/fontawesome.min');
 } catch (e) {}
 
 /**

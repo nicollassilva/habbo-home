@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-abstract class ImagerService {
+abstract class ImagerService
+{
     protected static $hotel = "com.br";
     protected static $startUrl = "https://www.habbo.%s/habbo-imaging/avatarimage?user=%s&%s";
 

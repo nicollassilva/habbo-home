@@ -8,8 +8,9 @@ class WidgetServices
 {
     /** @var array */
     protected $widgetMethods = [
-        898 => "userProfile",
-        899 => "guestbook"
+        898 => "profile",
+        899 => "guestbook",
+        900 => "badges"
     ];
 
     /** @var object */
@@ -28,19 +29,38 @@ class WidgetServices
 
     protected function guestbook()
     {
-        $userMessages = $this->item->user->messages;
-
-        return view("home.widgets.widget-{$this->item->product->id}", [
-            'messages' => $userMessages,
+        return view("home.widgets.widget-{$this->id()}", [
+            'messages' => $this->user()->messages,
             'item' => $this->item
         ])->render();
     }
 
-    protected function userProfile()
+    protected function profile()
     {
-        return view("home.widgets.widget-{$this->item->product->id}", [
-            "item" => $this->item,
-            "user" => $this->item->user
+        return view("home.widgets.widget-{$this->id()}", [
+            "item" => $this->item
         ]);
+    }
+
+    protected function badges()
+    {
+        // $badges = app(HabboService::class)->make(
+        //     $this->user()
+        // )->badges();
+
+        return view("home.widgets.widget-{$this->id()}", [
+            "badges" => [],
+            "item" => $this->item
+        ]);
+    }
+
+    protected function id()
+    {
+        return $this->item->product->id;
+    }
+    
+    protected function user()
+    {
+        return $this->item->user;
     }
 }
