@@ -14,9 +14,28 @@ Homepage = {
         
         this.initZAxis();
         //this.deleteItem();
-        //this.changeTheme();
+        this.changeTheme();
         this.reverse();
 	},
+
+    changeTheme() {
+        let dropdownClass = '.box-home .playground .widget .btns-actions button[dataPreferences]';
+
+        $(dropdownClass).off('click').on('click', function() {
+    		$(this).prev().fadeToggle();
+		});
+
+        $('.box-home .playground .widget .btns-actions .themes li').off("click").on(function() {
+			let theme = $(this).attr('data-content'),
+				item = $(this).parent().parent().parent().parent(),
+				itemId = Number(item.attr('class').split(' ')[2].replace('itemid', '')),
+				widgetId = Number(item.attr('class').split(' ')[3].replace('widget-', ''));
+
+            if(item.attr('data-skin') != theme) {
+                axios.post('/home/widget/change-theme', {  })
+            }
+        });
+    },
 
     reverse() {
 		$('.box-home .playground .sticker .btns-actions button:first-of-type').off('click').on('click', function() {

@@ -17,7 +17,7 @@ try {
         transitionOut: "flipOutX",
         theme: 'dark',
         displayMode: 'replace',
-        position: "center",
+        position: "topCenter",
         timeout: 3e3
     });
 

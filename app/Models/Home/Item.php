@@ -12,6 +12,10 @@ class Item extends Model
     
     protected $table = "users_home_items";
 
+    protected $fillable = [
+        'user_id', 'item_id', 'background', 'widget', 'theme'
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class, "item_id");
@@ -20,5 +24,17 @@ class Item extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function createFromAjax(Product $product)
+    {
+        $user = auth()->user();
+
+        $user->items()->create([
+            'item_id' => $product->id,
+            'background' => $product->category_id === 1 ? 1 : 0,
+            'widget' => $product->category_id === 4 ? 1 : 0,
+            'theme' => $product->category_id === 4 ? 'default_skin' : null
+        ]);
     }
 }

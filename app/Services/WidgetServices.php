@@ -31,14 +31,16 @@ class WidgetServices
     {
         return view("home.widgets.widget-{$this->id()}", [
             'messages' => $this->user()->messages,
-            'item' => $this->item
+            'item' => $this->item,
+            'isOwner' => $this->isOwner()
         ])->render();
     }
 
     protected function profile()
     {
         return view("home.widgets.widget-{$this->id()}", [
-            "item" => $this->item
+            "item" => $this->item,
+            'isOwner' => $this->isOwner()
         ]);
     }
 
@@ -52,7 +54,8 @@ class WidgetServices
 
         return view("home.widgets.widget-{$this->id()}", [
             "badges" => $badges,
-            "item" => $this->item
+            "item" => $this->item,
+            'isOwner' => $this->isOwner()
         ]);
     }
 
@@ -64,5 +67,14 @@ class WidgetServices
     protected function user()
     {
         return $this->item->user;
+    }
+
+    protected function isOwner()
+    {
+        if(!\Auth::check()) {
+            return false;
+        }
+
+        return auth()->id() === $this->user()->id;
     }
 }

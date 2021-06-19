@@ -15,4 +15,17 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function availableForPurchase()
+    {
+        if(!$this->purchase_limit) {
+            return true;
+        }
+
+        if(Item::where('item_id', $this->id)->count() < $this->purchase_limit) {
+            return true;
+        }
+
+        return false;
+    }
 }

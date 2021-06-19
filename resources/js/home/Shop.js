@@ -28,11 +28,11 @@ HomepageShop = {
             axios.get(`/home/category/${categorie}/subcategories`)
                 .then(({ data }) => {
                     if(!data.success) {
-                        window.toast.show({
+                        iziToast.show({
                             title: 'Oops',
                             message: data.message,
                             image: '/images/error.gif',
-                            position: 'topCenter',
+                            progressBarColor: 'rgba(255, 94, 87,1.0)',
                             imageWidth: 40,
                         });
 
@@ -66,11 +66,11 @@ HomepageShop = {
             axios.get(`/home/subcategory/${subcategorieId}/products`)
                 .then(({data}) => {
                     if(!data.success) {
-                        window.toast.show({
+                        iziToast.show({
                             title: 'Oops',
                             message: data.message,
                             image: '/images/error.gif',
-                            position: 'topCenter',
+                            progressBarColor: 'rgba(255, 94, 87,1.0)',
                             imageWidth: 40,
                         });
 
@@ -128,10 +128,62 @@ HomepageShop = {
     },
 
     buyItem() {
-        $('body').on('click', '.box-item-actions button.buy-item', _ => {
-            if(!this.currentItem) return;
+        let shopThis = this;
 
-            console.log(this.currentItem)
+        $('body').on('click', '.box-item-actions button.buy-item', function() {
+            setTimeout(() => $(this).attr('disabled', true), 1000)
+
+            iziToast.show({
+                image: '/images/success.gif',
+				imageWidth: 56,
+				progressBarColor: 'rgba(68, 189, 50, 1.0)',
+				title: 'Hey',
+				timeout: 3000,
+				message: 'Você confirma essa compra?',
+				position: 'center',
+				buttons: [
+					['<button>Confirmar</button>', (instance, toast) => {
+						if(!shopThis.currentItem) return;
+
+                        let quantity = parseInt($('.box-item-actions input#quantity').val()) || 1;
+
+                        if(!quantity) return;
+
+                        instance.hide({}, toast);
+
+                        axios.post(`/home/item/${shopThis.currentItem}/store`, { quantity })
+                            .then(({data}) => {
+                                if(!data.success) {
+                                    iziToast.show({
+                                        title: 'Oops',
+                                        message: data.message,
+                                        image: '/images/error.gif',
+                                        progressBarColor: 'rgba(255, 94, 87,1.0)',
+                                        imageWidth: 40,
+                                    });
+
+                                    return;
+                                }
+
+                                iziToast.show({
+                                    title: 'Yeah!',
+                                    message: data.message,
+                                    image: '/images/success.gif',
+                                    progressBarColor: 'rgba(68, 189, 50, 1.0)',
+                                    imageWidth: 56
+                                })
+                            });
+					}, true],
+					['<button>Espera!</button>', (instance, toast) => {
+						instance.hide({}, toast);
+                        
+						setTimeout(() => $(this).attr('disabled', false), 1000)
+					}]
+				],
+				onClosing: _ => {
+					setTimeout(() => $(this).attr('disabled', false), 1000)
+				}
+			});
         });
     }
 }

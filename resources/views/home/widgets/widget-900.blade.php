@@ -3,6 +3,9 @@
     <div class="heading">
         <span>Meus emblemas ({{ count($badges) }})</span>
     </div>
+    @if ($isOwner)
+        @include('home.widgets._partials.buttons')
+    @endif
     <div class="body">
         <div class="box-badges">
             @foreach ($badges as $badge)

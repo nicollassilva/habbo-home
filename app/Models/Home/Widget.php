@@ -9,19 +9,18 @@ class Widget extends Model
 {
     use HasFactory;
 
-    protected $themes = [
+    protected static $themes = [
         "golden_skin",
         "default_skin",
         "bubble_skin",
         "metal_skin",
         "notepad_skin",
         "note_skin",
-        "hcm_skin",
-        "hcgirl_skin"
+        "hcm_skin"
     ];
 
-    public function themes()
+    public static function themes()
     {
-        return collect($this->themes);
+        return collect(self::$themes);
     }
 }

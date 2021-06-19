@@ -28,6 +28,10 @@ Route::prefix("home/")
         Route::get("/subcategory/{id}/products", [App\Http\Controllers\Home\HomeController::class, "subcategoryProducts"])
             ->name("subcategory.products")
             ->whereNumber('id');
+
+        Route::post("/item/{id}/store", [App\Http\Controllers\Home\HomeController::class, "buyItem"])
+            ->name("item.store")
+            ->whereNumber("id");
     });
 
 Auth::routes();

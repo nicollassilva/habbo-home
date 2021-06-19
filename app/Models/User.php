@@ -77,4 +77,22 @@ class User extends Authenticatable
             ->where("widget_id", "<>", null)
             ->get();
     }
+    
+    public function hasSpecificWidget($product)
+    {
+        return $this->whereHas('items', function($query) use ($product) {
+            return $query->where("item_id", $product);
+        })->exists();
+    }
+
+    public function discountCoins(Int $valueToDiscount)
+    {
+        if($this->coins < $valueToDiscount) {
+            return false;
+        }
+        
+        $this->coins -= $valueToDiscount;
+
+        return $this->save();
+    }
 }

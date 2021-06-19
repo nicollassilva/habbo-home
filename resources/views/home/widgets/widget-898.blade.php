@@ -3,6 +3,9 @@
     <div class="heading">
         <span>Perfil de {{ $item->user->username }}</span>
     </div>
+    @if ($isOwner)
+        @include('home.widgets._partials.buttons')
+    @endif
     <div class="body">
         <div class="userfirst">
             <div class="usernamebox">

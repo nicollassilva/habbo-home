@@ -3,6 +3,9 @@
     <div class="heading">
         <span>Meu livro de visitas ({{ count($messages) }})</span>
     </div>
+    @if ($isOwner)
+        @include('home.widgets._partials.buttons')
+    @endif
     <div class="body">
         @auth
         <button onclick="Modal.Target(\'#guestbook\')" btnMessage>Escrever uma mensagem</button>
