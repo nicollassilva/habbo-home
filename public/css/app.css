@@ -11655,6 +11655,7 @@ a.new-button b {
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
   margin-top: 4px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 .modal.home-shop .modal-content .modal-body .subcategories li > a .icon {
   width: 25px;
@@ -11680,6 +11681,37 @@ a.new-button b {
   border-radius: 5px;
   position: relative;
   padding: 8px 10px;
+}
+.modal.home-shop .modal-content .modal-body .items .box-item-actions .item-preview {
+  width: 200px;
+  height: 198px;
+  margin: 15px;
+  background-color: var(--dark);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
+  transition: background-image 0.4s;
+  float: left;
+}
+.modal.home-shop .modal-content .modal-body .items .box-item-actions span.title {
+  width: calc(100% - 250px);
+  margin-left: 10px;
+  float: left;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 15px;
+  font-size: 18px;
+  line-height: 40px;
+}
+.modal.home-shop .modal-content .modal-body .items .box-item-actions button,
+.modal.home-shop .modal-content .modal-body .items .box-item-actions input {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 .modal.home-shop .modal-content .modal-body .items .box-items {
   max-height: calc(100vh - 375px);

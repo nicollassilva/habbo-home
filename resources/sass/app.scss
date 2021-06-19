@@ -150,6 +150,7 @@
                     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
                     margin-top: 4px;
                     transition: all .3s;
+                    cursor: pointer;
 
                     .icon {
                         width: 25px;
@@ -179,6 +180,38 @@
                     border-radius: 5px;
                     position: relative;
                     padding: 8px 10px;
+
+                    .item-preview {
+                        width: 200px;
+                        height: 198px;
+                        margin: 15px;
+                        background-color: var(--dark);
+                        border-radius: 5px;
+                        box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(0, 0, 0, 0.6);
+                        position: relative;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        image-rendering: pixelated;
+                        transition: background-image .4s;
+                        float: left;
+                    }
+
+                    span.title {
+                        width: calc(100% - 250px);
+                        margin-left: 10px;
+                        float: left;
+                        color: rgba(255, 255, 255, .7);
+                        margin-top: 15px;
+                        font-size: 18px;
+                        line-height: 40px;
+                    }
+
+                    button,
+                    input {
+                        box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+                        border: 1px solid rgba(0, 0, 0, 0.6);
+                    }
                 }
 
                 .box-items {

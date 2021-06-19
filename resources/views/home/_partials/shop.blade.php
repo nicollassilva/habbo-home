@@ -35,7 +35,14 @@
                     <ul class="nav nav-subcategories flex-column"></ul>
                 </div>
                 <div class="col-9 col-xl-10 items">
-                    <div class="col-12 bg-secondary d-block box-item-actions"></div>
+                    <div class="col-12 bg-secondary box-item-actions" style="display: none">
+                        <div class="item-preview"></div>
+                        <span class="title mb-2"></span>
+                        <button class="btn btn-dark mt-3 d-block">Price: <b></b></button>
+                        <input type="number" min="1" max="255" value="1" id="quantity" class="btn btn-dark d-block mt-3">
+                        <button class="btn btn-success mt-3 btn-lg buy-item">Comprar</button>
+                        <button class="btn btn-primary mt-3 btn-lg">Presentear</button>
+                    </div>
                     <div class="col-12 box-items p-0"></div>
                 </div>
             </div>
