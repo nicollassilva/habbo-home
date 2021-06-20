@@ -34,7 +34,7 @@ class WidgetServices
     protected function guestbook()
     {
         return view("home.widgets.widget-{$this->id()}", [
-            'messages' => $this->user()->messages,
+            'messages' => $this->user()->guestbookMessages(),
             'item' => $this->item,
             'isEditable' => $this->editAvailable()
         ])->render();
@@ -50,11 +50,9 @@ class WidgetServices
 
     protected function badges()
     {
-        // $badges = app(HabboService::class)->make(
-        //     $this->user()
-        // )->badges();
-
-        $badges = [];
+        $badges = app(HabboService::class)->make(
+            $this->user()
+        )->badges();
 
         return view("home.widgets.widget-{$this->id()}", [
             "badges" => $badges,

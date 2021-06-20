@@ -11459,11 +11459,16 @@ a.new-button b {
   border: 1px solid #ccc;
   float: left;
   margin: 4px 0 0 4px;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
   transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   position: relative;
+}
+.box-home .widget .body .box-badges .emblema img {
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .box-home .widget .body .box-badges .emblema:hover {
@@ -11533,6 +11538,142 @@ a.new-button b {
 .box-home .widget.itemid901,
 .box-home .widget.itemid902 {
   width: 280px;
+}
+
+.menu {
+  width: 100vw;
+  height: 70px;
+  background-color: var(--primary);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+.menu ul.principal-list {
+  display: flex;
+}
+.menu ul.principal-list li.item-menu {
+  width: 185px;
+  height: 70px;
+  list-style: none;
+  display: flex;
+  position: relative;
+  transition: box-shadow 0.4s;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer !important;
+}
+.menu ul.principal-list li.item-menu:first-of-type {
+  border-left-width: 2px;
+}
+.menu ul.principal-list li.item-menu:first-of-type .icon-menu {
+  background-image: url("/images/menu/inicio.png");
+}
+.menu ul.principal-list li.item-menu:last-of-type {
+  border-right-width: 2px;
+}
+.menu ul.principal-list li.item-menu:last-of-type .icon-menu {
+  background-image: url("/images/menu/radio.png");
+}
+.menu ul.principal-list li.item-menu a {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white !important;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+}
+.menu ul.principal-list li.item-menu:hover {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.menu ul.principal-list li.item-menu:hover a.title-menu {
+  visibility: hidden;
+}
+.menu ul.principal-list li.item-menu:hover .icon-menu {
+  transform: translate(-50%, -50%) rotateY(0deg);
+}
+.menu ul.principal-list li.item-menu:hover .drop-menu {
+  transform: rotateX(0deg);
+}
+.menu ul.principal-list li.item-menu a.title-menu i {
+  margin-right: 5px;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.menu ul.principal-list li.item-menu .icon-menu {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateY(90deg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s;
+  filter: drop-shadow(-2px 0 0 var(--light)) drop-shadow(0 -2px 0 var(--light)) drop-shadow(2px 0 0 var(--light)) drop-shadow(0 2px 0 var(--light));
+}
+.menu ul.principal-list li.item-menu:nth-child(2) .icon-menu {
+  background-image: url("/images/menu/habboacademy.png");
+}
+.menu ul.principal-list li.item-menu:nth-child(3) .icon-menu {
+  background-image: url("/images/menu/habbo.png");
+}
+.menu ul.principal-list li.item-menu:nth-child(4) .icon-menu {
+  background-image: url("/images/menu/conteudos.png");
+}
+.menu ul.principal-list li.item-menu:nth-child(5) .icon-menu {
+  background-image: url("/images/menu/facenter.png");
+}
+.menu ul.principal-list li.item-menu .drop-menu {
+  position: absolute;
+  width: 215px;
+  top: 68px;
+  left: -15px;
+  background-color: white;
+  min-height: 40px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 0.2s linear;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul {
+  width: 100%;
+  display: block;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul li {
+  width: 100%;
+  height: 40px;
+  display: flex;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul li:not(:last-of-type) {
+  border-bottom: 1px solid #eee;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul li a {
+  color: #444 !important;
+  flex: 1;
+  justify-content: flex-start;
+  padding-left: 10px;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul li a:hover {
+  background-color: var(--primary);
+  color: white !important;
+  font-weight: 600;
+  padding-left: 20px;
+}
+.menu ul.principal-list li.item-menu .drop-menu ul li:last-of-type a {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+img {
+  pointer-events: none;
 }
 
 .form-signin {

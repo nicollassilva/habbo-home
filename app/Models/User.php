@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Message::class)->latest();
     }
 
+    public function guestbookMessages()
+    {
+        return $this->messages()->limit(50)->get();
+    }
+
     public function getItems()
     {
         return $this->items()->with('product');

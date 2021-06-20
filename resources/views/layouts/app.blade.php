@@ -21,7 +21,11 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
+        {{-- @auth
+            @include('layouts._partials.menu')
+        @endauth --}}
+
         @yield('content')
     </div>
 

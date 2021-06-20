@@ -10,6 +10,13 @@
 // Home widgets
 @import 'widgets';
 
+// Menu
+@import 'menu';
+
+img {
+    pointer-events: none
+}
+
 .form-signin {
     width: 100%;
     max-width: 330px;

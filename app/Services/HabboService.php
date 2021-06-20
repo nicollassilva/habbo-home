@@ -61,6 +61,10 @@ class HabboService
      */
     public function badges()
     {
-        return $this->profile()->getBadges();
+        try {
+            return $this->profile()->getBadges();
+        } catch(\Exception $e) {
+            return [];
+        }
     }
 }

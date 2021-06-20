@@ -113,6 +113,8 @@ Homepage = {
 	},
 
     saveItems() {
+        let shopThis = this;
+
         $('.box-home .header button[dataSave]').one('click', () => {
             let items = [];
 
@@ -122,8 +124,13 @@ Homepage = {
 					top = Number($(e).css("top").replace(/[px||rem||cm]/gi, '')),
 					left = Number($(e).css("left").replace(/[px||rem||cm]/gi, '')),
 					zIndex = $(e).css("z-index") != 'auto' ? Number($(e).css("z-index")) : 1,
-					reverse = $(e).hasClass('in-draggable-widget') ? 0 : (Number($(e).attr('reverse')) ?? 0),
-                    theme = $(e).hasClass('in-draggable-widget') ? $(e).attr('data-theme') ?? 'default_skin' : null;
+					reverse = $(e).hasClass('in-draggable-widget') ? 0 : (Number($(e).attr('reverse')) ?? 0);
+
+                let theme = $(e).hasClass('in-draggable-widget') ? $(e).attr('data-theme') ?? 'default_skin' : null;
+
+                if(!shopThis.themes.includes(theme)) {
+                    theme = 'default_skin';
+                }
 
 				items[a] = { 
                     item_id: itemId,

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Services\HabboService;
 use Illuminate\Support\Facades\Route;
 
 /*

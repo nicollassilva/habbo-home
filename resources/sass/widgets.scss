@@ -1478,11 +1478,17 @@ a.new-button b {
     border: 1px solid #ccc;
     float: left;
     margin: 4px 0 0 4px;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .8);
     transition: background-color .3s cubic-bezier(.075, .82, .165, 1);
     position: relative;
+
+    img {
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 .box-home .widget .body .box-badges .emblema:hover {

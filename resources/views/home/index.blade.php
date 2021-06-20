@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Minha Habbo Home')
+@section('title', isset($user) ? "Home de {$user->username}" : "Minha home")
 
 @php
     $playgroundBackground = '';
@@ -48,6 +48,8 @@
         </div>
     </div>
 </div>
-@include('home._partials.shop')
+@if ($homeEditable)
+    @include('home._partials.shop')
+@endif
 
 @endsection
