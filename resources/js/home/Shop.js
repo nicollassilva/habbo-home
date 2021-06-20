@@ -5,6 +5,10 @@ HomepageShop = {
     currentItem: null,
 
     initialize() {
+        if(window.location.pathname != '/home/index') {
+            return;
+        }
+
         this.showSubcategories();
         this.showItemsFromSubcategorie();
         this.showItemWhenClick();

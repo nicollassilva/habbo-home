@@ -3,7 +3,7 @@
     <div class="heading">
         <span>Meu livro de visitas ({{ count($messages) }})</span>
     </div>
-    @if ($isOwner)
+    @if ($isEditable)
         @include('home.widgets._partials.buttons')
     @endif
     <div class="body">

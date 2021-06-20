@@ -5,12 +5,20 @@ Homepage = {
     themes: ["golden_skin", "default_skin", "bubble_skin", "metal_skin", "notepad_skin", "note_skin", "hcm_skin"],
 
     initialize() {
+        if(window.location.pathname != '/home/index') {
+            return;
+        }
+
         this.initDraggable();
         this.saveItems();
         //this.reload();
     },
 
     initDraggable() {
+        if(window.location.pathname != '/home/index') {
+            return;
+        }
+        
 		$('.playground .in-draggable').draggable({
             containment:'.playground',
             cursor: 'move'

@@ -9,6 +9,7 @@ use App\Models\Home\Category;
 use App\Models\Home\SubCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateItem;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,22 @@ class HomeController extends Controller
         
         return view("home.index", [
             'background' => $user->activeBackground(),
-            'items' => $user->placedItems()
+            'items' => $user->placedItems(),
+            'homeEditable' => true
+        ]);
+    }
+
+    public function show($username)
+    {
+        if(!$user = User::whereUsername($username)->first()) {
+            return redirect()->back();
+        }
+
+        return view("home.index", [
+            'background' => $user->activeBackground(),
+            'items' => $user->placedItems(),
+            'user' => $user,
+            'homeEditable' => false
         ]);
     }
 

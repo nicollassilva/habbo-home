@@ -11,9 +11,9 @@ if (!function_exists('imager')) {
 }
 
 if (!function_exists('widget')) {
-    function widget(Item $item)
+    function widget(Item $item, Bool $editable)
     {
-        return app(App\Services\WidgetServices::class)->make($item);
+        return app(App\Services\WidgetServices::class)->make($item, $editable);
     }
 }
 

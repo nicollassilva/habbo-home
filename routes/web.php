@@ -19,21 +19,22 @@ Route::prefix("home/")
     ->name("home.")
     ->middleware("auth")
     ->group(function() {
-        Route::get("/index", [App\Http\Controllers\Home\HomeController::class, "index"])->name("index");
+        Route::get("/index", "Home\HomeController@index")->name("index");
+        Route::get("/{username}", "Home\HomeController@show")->name("show");
 
-        Route::get("/category/{id}/subcategories", [App\Http\Controllers\Home\HomeController::class, "subcategories"])
+        Route::get("/category/{id}/subcategories", "Home\HomeController@subcategories")
             ->name("category.subcategories")
             ->whereNumber('id');
 
-        Route::get("/subcategory/{id}/products", [App\Http\Controllers\Home\HomeController::class, "subcategoryProducts"])
+        Route::get("/subcategory/{id}/products", "Home\HomeController@subcategoryProducts")
             ->name("subcategory.products")
             ->whereNumber('id');
 
-        Route::post("/item/{id}/store", [App\Http\Controllers\Home\HomeController::class, "buyItem"])
+        Route::post("/item/{id}/store", "Home\HomeController@buyItem")
             ->name("items.store")
             ->whereNumber("id");
 
-        Route::put("/items/update", [App\Http\Controllers\Home\HomeController::class, "updateProfile"])
+        Route::put("/items/update", "Home\HomeController@updateProfile")
             ->name("items.update");
     });
 

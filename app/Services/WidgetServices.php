@@ -16,11 +16,15 @@ class WidgetServices
     /** @var object */
     protected $item;
 
-    public function make(Item $item)
+    /** @var bool */
+    protected $editable = false;
+
+    public function make(Item $item, Bool $homeEditable)
     {
         if(!array_key_exists($item->product->id, $this->widgetMethods)) return;
 
         $this->item = $item;
+        $this->editable = $homeEditable;
 
         $method = $this->widgetMethods[$item->product->id];
 
@@ -32,7 +36,7 @@ class WidgetServices
         return view("home.widgets.widget-{$this->id()}", [
             'messages' => $this->user()->messages,
             'item' => $this->item,
-            'isOwner' => $this->isOwner()
+            'isEditable' => $this->editAvailable()
         ])->render();
     }
 
@@ -40,7 +44,7 @@ class WidgetServices
     {
         return view("home.widgets.widget-{$this->id()}", [
             "item" => $this->item,
-            'isOwner' => $this->isOwner()
+            'isEditable' => $this->editAvailable()
         ]);
     }
 
@@ -55,7 +59,7 @@ class WidgetServices
         return view("home.widgets.widget-{$this->id()}", [
             "badges" => $badges,
             "item" => $this->item,
-            'isOwner' => $this->isOwner()
+            'isEditable' => $this->editAvailable()
         ]);
     }
 
@@ -69,12 +73,12 @@ class WidgetServices
         return $this->item->user;
     }
 
-    protected function isOwner()
+    protected function editAvailable()
     {
         if(!\Auth::check()) {
             return false;
         }
 
-        return auth()->id() === $this->user()->id;
+        return (auth()->id() === $this->user()->id) && $this->editable;
     }
 }
