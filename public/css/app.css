@@ -10148,10 +10148,8 @@ h3 {
 .box-home .playground .btns-actions .themes {
   width: 150px;
   height: 150px;
-  background-color: var(--primary);
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
+  background-color: var(--light);
   border: 1px solid black;
-  border-radius: 5px;
   float: left;
   position: absolute;
   top: 30px;
@@ -10178,12 +10176,15 @@ h3 {
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  color: white;
-  text-shadow: 0 1px 0 black;
+  color: #212529;
+}
+
+.box-home .playground .btns-actions .themes ul li:nth-child(even) {
+  background-color: #f1f1f1;
 }
 
 .box-home .playground .btns-actions .themes ul li:hover {
-  background-color: #74b9ff;
+  background-color: #eee;
   font-weight: 700;
 }
 

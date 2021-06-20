@@ -13,7 +13,8 @@ class Item extends Model
     protected $table = "users_home_items";
 
     protected $fillable = [
-        'user_id', 'item_id', 'background', 'widget', 'theme'
+        'user_id', 'item_id', 'x', 'y', 'z', 'placed', 'editing', 
+        'reverse', 'background', 'widget', 'theme'
     ];
 
     public function product()

@@ -30,8 +30,11 @@ Route::prefix("home/")
             ->whereNumber('id');
 
         Route::post("/item/{id}/store", [App\Http\Controllers\Home\HomeController::class, "buyItem"])
-            ->name("item.store")
+            ->name("items.store")
             ->whereNumber("id");
+
+        Route::put("/items/update", [App\Http\Controllers\Home\HomeController::class, "updateProfile"])
+            ->name("items.update");
     });
 
 Auth::routes();

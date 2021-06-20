@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\Home\Item;
 use App\Models\Home\Product;
+use Illuminate\Http\Request;
 use App\Models\Home\Category;
 use App\Models\Home\SubCategory;
 use App\Http\Controllers\Controller;
@@ -96,6 +97,32 @@ class HomeController extends Controller
         return response()->json([
             "success" => true,
             "message" => "Compra bem sucedida!"
+        ]);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $items = json_decode($request->items, true);
+
+        if(!is_array($items)) {
+            return response()->json([
+                "success" => true,
+                "message" => "Sua página vazia foi salva!"
+            ]);
+        }
+
+        $user = auth()->user();
+
+        foreach($items as $itemData) {
+            if($item = $user->getSpecificItem($itemData)) {
+                $item->update($itemData);
+            }
+        }
+
+        return response()->json([
+            "success" => true,
+            "message" => "Sua página ficou linda!",
+            "data" => $items
         ]);
     }
 }

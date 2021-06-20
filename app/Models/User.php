@@ -85,6 +85,16 @@ class User extends Authenticatable
         })->exists();
     }
 
+    public function getSpecificItem($itemData)
+    {
+        return $this->items()->where(function($query) use ($itemData) {
+            return $query->where("item_id", $itemData["item_id"])
+                  ->where("widget_id", $itemData["widget_id"])
+                  ->whereIn('placed', [true, false])
+                  ->whereEditing(true);
+        })->first();
+    }
+
     public function discountCoins(Int $valueToDiscount)
     {
         if($this->coins < $valueToDiscount) {
