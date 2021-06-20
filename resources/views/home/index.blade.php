@@ -27,10 +27,10 @@
                 </button>
             @endif
         </div>
-        <div class="playground" {!! $playgroundBackground !!}>
+        <div class="playground" {!! $playgroundBackground !!}>  
             @foreach ($items as $userItem)
                 @if (!$userItem->widget)
-                    <div class="sticker in-draggable itemid{{ $userItem->product->id }} widget-{{ $userItem->widget_id }}"
+                    <div class="sticker @if ($homeEditable) in-draggable itemid{{ $userItem->product->id }} widget-{{ $userItem->widget_id }} @endif"
                         reverse="{{ $userItem->reverse }}"
                         style="left: {{ $userItem->x }}px;top: {{ $userItem->y }}px;z-index: {{ $userItem->z }};">
                         <img src="/storage/homepage/{{ $userItem->product->category->name }}/{{ $userItem->product->image }}" alt="{{ $userItem->product->title }}" width="{{ $userItem->product->width }}" height="{{ $userItem->product->height }}">

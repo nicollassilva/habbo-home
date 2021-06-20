@@ -1,5 +1,3 @@
-const { default: axios } = require("axios");
-
 HomepageShop = {
     modal: $('.modal.home-shop'),
     currentItem: null,

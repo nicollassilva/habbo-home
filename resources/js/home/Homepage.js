@@ -1,5 +1,3 @@
-const { default: axios } = require("axios");
-
 Homepage = {
     playground: $('.box-home .playground'),
     themes: ["golden_skin", "default_skin", "bubble_skin", "metal_skin", "notepad_skin", "note_skin", "hcm_skin"],
