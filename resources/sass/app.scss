@@ -139,7 +139,8 @@ img {
     overflow-y: auto;
 }
 
-.modal.home-shop {
+.modal.home-shop,
+.modal.home-inventory {
     .modal-content {
         background-color: rgba(0, 0, 0, 0.8);
         color: #f1f1f1;
@@ -283,4 +284,11 @@ img {
     &:hover {
         background-color: #74b9ff;
     }
+}
+
+i.coins {
+    width: 19px;
+    height: 19px;
+    float: left;
+    background-image: url('/images/icons/coins.png');
 }

@@ -8,13 +8,10 @@
                     <div class="col col-7 h-100">
                         <ul class="nav nav-pills nav-justified">
                             <li class="nav-item">
-                                <a class="nav-link" data-categorie="5">Principal</a>
+                                <a class="nav-link" data-categorie="2">Stickers</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-categorie="1">Backgrounds</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-categorie="2">Stickers</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-categorie="4">Widgets</a>
@@ -38,8 +35,11 @@
                     <div class="col-12 bg-secondary box-item-actions" style="display: none">
                         <div class="item-preview"></div>
                         <span class="title mb-2"></span>
-                        <button class="btn btn-dark mt-3 d-block">Price: <b></b></button>
-                        <input type="number" min="1" max="255" value="1" id="quantity" class="btn btn-dark d-block mt-3">
+                        <button class="btn btn-dark mt-3 d-block"><i class="coins mr-2"></i>Price: <b></b></button>
+                        <div class="row position-relative">
+                            <i class="fas fa-sort-numeric-up-alt position-absolute" style="top: 25px; left: 10px; font-size: 16px;"></i>
+                            <input type="number" min="1" max="255" value="1" id="quantity" class="btn btn-dark d-block pl-4 mt-3">
+                        </div>
                         <button class="btn btn-success mt-3 btn-lg buy-item">Comprar</button>
                         <button class="btn btn-primary mt-3 btn-lg">Presentear</button>
                     </div>

@@ -11,6 +11,19 @@ HomepageShop = {
         this.showItemsFromSubcategorie();
         this.showItemWhenClick();
         this.buyItem();
+        this.functions();
+    },
+
+    functions() {
+        let shopThis = this;
+
+        $('button[dataInventory], button[dataShop]').on('click', function() {
+            let activeCategories = $(shopThis.modal).find('a.nav-link.active[data-categorie]');
+
+            if(activeCategories.length <= 0) {
+                $(shopThis.modal).find('li.nav-item:first-of-type a.nav-link[data-categorie]').trigger('click');
+            }
+        });
     },
 
     showSubcategories() {
@@ -47,6 +60,8 @@ HomepageShop = {
                     data.data.map(e => {
                         navSubcategories.append(`<li class="nav-item" data-subcategorie="${e.id}"><a class="nav-link"><div class="icon" style="background-image: url('/storage/homepage/icons/${e.icon}')"></div>${e.name}</a></li>`);
                     });
+
+                    navSubcategories.find('li.nav-item:first-of-type').trigger('click')
                 });
         });
     },

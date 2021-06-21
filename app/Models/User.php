@@ -63,6 +63,16 @@ class User extends Authenticatable
         return $this->items()->with('product');
     }
 
+    public function getItemsByCategory($categoryId)
+    {
+        return $this->getItems()
+                ->wherePlaced(false)
+                ->whereEditing(false)
+                ->whereHas('product', function($query) use ($categoryId) {
+                    return $query->where('category_id', $categoryId);
+                })->get();
+    }
+
     public function activeBackground()
     {
         return $this->getItems()

@@ -32,12 +32,15 @@ Route::prefix("home/")
             ->name("subcategory.products")
             ->whereNumber('id');
 
-        Route::post("/item/{id}/store", "Home\HomeController@buyItem")
+        Route::post("/item/{id}/store", "UserController@productBuy")
             ->name("items.store")
             ->whereNumber("id");
 
-        Route::put("/items/update", "Home\HomeController@updateProfile")
-            ->name("items.update");
+        Route::put("/items/update", "UserController@updateProfile")
+            ->name("update");
+
+        Route::get('/category/{id}/items/show', "UserController@showItemsFromCategory")
+            ->name("users.items");
     });
 
 Auth::routes();

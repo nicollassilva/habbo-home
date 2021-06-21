@@ -16,10 +16,11 @@
     <div class="box-home mb-5">
         <div class="header">
             @if ($homeEditable)
-                <button class="btn btn-sm btn-dark" onclick="Modal.Target('#MyItems')" dataInventory>
+                <button class="btn btn-sm btn-dark" data-toggle="modal" data-target="#inventoryModal" dataInventory>
                     <i class="fas fa-boxes mr-1"></i>Meu inventário
+                    <!--span class="badge badge-danger">5</span-->
                 </button>
-                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#shopModal">
+                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#shopModal" dataShop>
                     <i class="fas fa-store mr-1"></i>Loja de Widgets
                 </button>
                 <button class="btn btn-sm btn-success" dataSave>
@@ -50,6 +51,7 @@
 </div>
 @if ($homeEditable)
     @include('home._partials.shop')
+    @include('home._partials.inventory')
 @endif
 
 @endsection
