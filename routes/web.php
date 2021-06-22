@@ -39,8 +39,9 @@ Route::prefix("home/")
         Route::put("/items/update", "UserController@updateProfile")
             ->name("update");
 
-        Route::get('/category/{id}/items/show', "UserController@showItemsFromCategory")
-            ->name("users.items");
+        Route::get('/category/{id}/items/show', "UserController@showItemsByCategory")
+            ->name("user.items.category")
+            ->whereNumber('id');
     });
 
 Auth::routes();

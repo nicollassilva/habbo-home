@@ -7,6 +7,7 @@ use App\Models\Home\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -70,7 +71,8 @@ class User extends Authenticatable
                 ->whereEditing(false)
                 ->whereHas('product', function($query) use ($categoryId) {
                     return $query->where('category_id', $categoryId);
-                })->get();
+                })
+                ->get();
     }
 
     public function activeBackground()
@@ -85,7 +87,8 @@ class User extends Authenticatable
 
     public function placedItems()
     {
-        return $this->getItems()
+        return $this->items()
+            ->with('product.category')
             ->whereIn('placed', [true, false])
             ->whereEditing(true)
             ->whereBackground(false)

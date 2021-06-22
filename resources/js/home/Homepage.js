@@ -166,7 +166,7 @@ Homepage = {
                     imageWidth: 56
                 });
 
-                setTimeout(_ => window.location = '/home/index', 1000);
+                setTimeout(_ => window.location = data.redirect, 1000);
             })
         });
     }

@@ -75,22 +75,16 @@ class UserController extends Controller
 
         return response()->json([
             "success" => true,
-            "message" => "Sua página ficou linda!"
+            "message" => "Sua página ficou linda!",
+            "redirect" => "/home/{$user->username}"
         ]);
     }
 
-    public function showItemsFromCategory($id)
+    public function showItemsByCategory($id)
     {
-        if(!$category = Category::find($id)) {
-            return response()->json([
-                "success" => false,
-                "message" => "Categoria não encontrada!"
-            ]);
-        }
-
         return response()->json([
             "success" => true,
-            "data" => auth()->user()->getItemsByCategory($category->id)
+            "data" => auth()->user()->getItemsByCategory($id)
         ]);
     }
 }
