@@ -34,7 +34,8 @@ Inventory = {
                     boxItems.html('');
 
                     data.data.map(item => {
-                        boxItems.append(`<div class="item" data-name="${item.product.title}" data-id="${item.product.id}" style="background-image: url('/storage/homepage/${categorieName}/${item.product.image}')"></div>`)
+                        console.log(item)
+                        boxItems.append(`<div class="item" data-name="${item.title}" data-id="${item.id}" style="background-image: url('/storage/homepage/${item.category}/${item.image}')">${item.quantity > 1 ? `<span class="quantity">${item.quantity}</span>` : ''}</div>`)
                     });
 
                     boxItems.find('.item:first-of-type').trigger('click');

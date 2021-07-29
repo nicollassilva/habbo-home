@@ -66,12 +66,17 @@ class User extends Authenticatable
 
     public function getItemsByCategory($categoryId)
     {
-        return $this->getItems()
+        return $this->items()
+                ->join('home_items', 'home_items.id', '=', 'users_home_items.item_id')
+                ->join('home_categories', 'home_categories.id', '=', 'home_items.category_id')
+                ->select(['home_items.id', 'home_items.image', 'home_items.title', 'home_categories.name as category'])
+                ->selectRaw('count(users_home_items.item_id) as quantity')
                 ->wherePlaced(false)
                 ->whereEditing(false)
                 ->whereHas('product', function($query) use ($categoryId) {
                     return $query->where('category_id', $categoryId);
                 })
+                ->groupBy('users_home_items.item_id')
                 ->get();
     }
 
